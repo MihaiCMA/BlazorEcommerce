@@ -1,5 +1,5 @@
-global using BlazorEcommerce.Client.Services.ProductService;
 global using BlazorEcommerce.Client.Services.CategoryService;
+global using BlazorEcommerce.Client.Services.ProductService;
 global using BlazorEcommerce.Shared;
 global using System.Net.Http.Json;
 using BlazorEcommerce.Client;
