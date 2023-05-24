@@ -11,6 +11,10 @@
 }
 
 @media (max-width: 1023.98px) {
+    .media {
+        flex-direction: column;
+    }
+
     .mediat-img {
         max-width: 300px;
     }
