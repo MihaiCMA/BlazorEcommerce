@@ -5,7 +5,8 @@
 {
     <span>@ProductService.Message</span>
 }
-
+else
+{
 <ul class="list-unstyled">
     @foreach (var product in ProductService.Products)
     {
@@ -21,12 +22,13 @@
                 </a>
                 <p>@product.Description</p>
                 <h5 class="price">
-                    @GetPRiceText(product);
+                    @GetPriceText(product)  
                 </h5>
             </div>
         </li>
     }
 </ul>
+}
 
 @code {
     protected override void OnInitialized()
@@ -39,7 +41,7 @@
         ProductService.ProductsChanged -= StateHasChanged;
     }
 
-    private string GetPRiceText(Product product)
+    private string GetPriceText(Product product)
     {
         var variants = product.Variants;
         if (variants.Count == 0)

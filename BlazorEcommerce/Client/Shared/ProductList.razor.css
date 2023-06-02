@@ -1,4 +1,4 @@
-﻿.media-img {
+﻿﻿.media-img {
     max-height: 200px;
     max-width: 200px;
     border-radius: 6px;
@@ -20,7 +20,7 @@
         flex-direction: column;
     }
 
-    media-image-wrapper {
+    .media-image-wrapper {
         width: 100%;
         height: auto;
     }
