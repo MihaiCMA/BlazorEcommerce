@@ -39,12 +39,8 @@
         var result = await AuthService.Register(user);
         message = result.Message;
         if (result.Success)
-        {
             messageCssClass = "text-success";
-        }
         else
-        {
             messageCssClass = "text-danger";
-        }
     }
 }
