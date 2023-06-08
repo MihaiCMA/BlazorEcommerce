@@ -71,14 +71,21 @@ namespace BlazorEcommerce.Server.Services.PaymentService
                 var stripeEvent = EventUtility.ConstructEvent(
                         json,
                         request.Headers["Stripe-Signature"],
-                        secret
+                        secret,
+                        throwOnApiVersionMismatch: false
                     );
-
-                if (stripeEvent.Type == Events.CheckoutSessionCompleted)
+                try
                 {
-                    var session = stripeEvent.Data.Object as Session;
-                    var user = await _authService.GetUserByEmail(session.CustomerEmail);
-                    await _orderService.PlaceOrder(user.Id);
+                    if (stripeEvent.Type == Events.CheckoutSessionCompleted)
+                    {
+                        var session = stripeEvent.Data.Object as Session;
+                        var user = await _authService.GetUserByEmail(session.CustomerEmail);
+                        await _orderService.PlaceOrder(user.Id);
+                    }
+                }
+                catch (Exception ex)
+                {
+                    Console.WriteLine(ex);
                 }
 
                 return new ServiceResponse<bool> { Data = true };
